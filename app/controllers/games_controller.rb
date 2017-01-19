@@ -1,9 +1,8 @@
 class GamesController < ApplicationController
 	def param_games
 
-		value = params[:name]
-		if value.class == String
 			@display = params[:name]
+			if @display.class == String
 			@array = @display[0]
 			if @array == "A"
 				@answer = "Hey, your name starts with the first letter of the alphabet!"
@@ -16,14 +15,18 @@ class GamesController < ApplicationController
 	end
 
 	def guess
+
 		correct_number = 39
+		@message = "Please guess a number"
 		result = params[:number]
-		if result.to_i > correct_number
-			@message = "Guess lower"
-		elsif result.to_i < correct_number
-			@message = "Guess higher"
-		else
-			@message = "Congz, you won"
+		if result.class == String
+			if result.to_i > correct_number
+				@message = "Guess lower"
+			elsif result.to_i < correct_number
+				@message = "Guess higher"
+			else
+				@message = "Congz, you won"
+			end
 		end
 		render "guess_game.html.erb"
 	end
