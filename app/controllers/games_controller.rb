@@ -4,13 +4,14 @@ class GamesController < ApplicationController
 			@display = params[:name]
 			if @display.class == String
 			@array = @display[0]
-			@display = @display.upcase
-			if @array == "A"
+			@display = "Your name is: #{@display.upcase}"
+			if @array == "A" or @array == "a"
 				@answer = "Hey, your name starts with the first letter of the alphabet!"
 			end
 			
 		else
 			@array = ""
+			@display = "Please enter your name"
 		end
 	render "param_game.html.erb"
 	end
