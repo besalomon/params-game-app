@@ -4,6 +4,7 @@ class GamesController < ApplicationController
 			@display = params[:name]
 			if @display.class == String
 			@array = @display[0]
+			@display = @display.upcase
 			if @array == "A"
 				@answer = "Hey, your name starts with the first letter of the alphabet!"
 			end
